@@ -4,6 +4,7 @@ import com.talentyco.models.entity.Cliente;
 import com.talentyco.models.services.IClienteService;
 import com.talentyco.models.services.IUploadFileService;
 import com.talentyco.util.paginator.PageRender;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;

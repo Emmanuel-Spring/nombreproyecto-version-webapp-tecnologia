@@ -1,11 +1,16 @@
 package com.talentyco;
 
+import com.talentyco.models.services.IUploadFileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SistemafacturacionWebappSpringbootApplication implements CommandLineRunner {
+
+	@Autowired
+	IUploadFileService uploadFileService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemafacturacionWebappSpringbootApplication.class, args);
@@ -14,5 +19,7 @@ public class SistemafacturacionWebappSpringbootApplication implements CommandLin
 	@Override
 	public void run(String... args) throws Exception {
 
+		uploadFileService.deleteAll();
+		uploadFileService.init();
 	}
 }

@@ -86,7 +86,7 @@ public class ClienteController {
 
         PageRender<Cliente> pageRender = new PageRender<Cliente>("/listar", clientes);
         modelo.addAttribute("titulo", "Listado de clientes");
-        modelo.addAttribute("Clientes", clientes);
+        modelo.addAttribute("clientes", clientes);
         modelo.addAttribute("page", pageRender);
         return "listar";
     }
@@ -97,7 +97,7 @@ public class ClienteController {
     public String crear(Map<String, Object> modelo) {
 
         Cliente cliente = new Cliente();
-        modelo.put("Cliente", cliente);
+        modelo.put("cliente", cliente);
         modelo.put("titulo", "Formulario de cliente");
 
         return "form";
@@ -162,7 +162,7 @@ public class ClienteController {
 
         clienteService.save(cliente);
         status.setComplete();
-        flash.addFlashAttribute("Success !!!!", mensajeFlash);
+        flash.addFlashAttribute("success", mensajeFlash);
 
 
         return "redirect:/listar";
@@ -180,10 +180,10 @@ public class ClienteController {
             Cliente cliente = clienteService.findOne(id);
 
             clienteService.delete(id);
-            flash.addFlashAttribute("Success !!!!", "Cliente eliminado con éxito !!");
+            flash.addFlashAttribute("success", "Cliente eliminado con éxito !!");
 
             if (uploadFileService.delete(cliente.getFoto())) {
-                flash.addFlashAttribute("info", "Foto" + cliente.getFoto() + "Eliminada con éxito !!!");
+                flash.addFlashAttribute("info", "foto" + cliente.getFoto() + "Eliminada con éxito !!!");
             }
         }
 
